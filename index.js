@@ -54,6 +54,7 @@ var PGPubsub = function (conString, options) {
       });
     },
     end: function (db) {
+      if(!db) return;
       db.end();
     },
     log: options.log || console.log.bind(console),
@@ -126,6 +127,7 @@ PGPubsub.prototype.publish = function (channel, data) {
 };
 
 PGPubsub.prototype.close = function () {
+  debugger;
   this.retry.end();
   this.removeAllListeners();
   this.channels = [];
